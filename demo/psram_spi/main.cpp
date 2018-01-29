@@ -2,12 +2,15 @@
 #include "SpiRAM.h"
 
 //#define TMP_BORDER  0x003FF
-#define TMP_BORDER  0x0040F
+#define TMP_BORDER  0x0040F  // page size
 //#define TMP_BORDER  0x0041F
 #define TMP_LEN     10
 #define WORD_LEN    32
 
 const uint32_t ramSize = 0x3FFFFF;           // 4M x 8 bit
+//const uint32_t ramSize = 0x3FFFFF;           // 4M x 8 bit
+
+
 char buffer[] = {"0123456789ABCDEF"};
 int s4_buf[WORD_LEN];
 int s4_buf1[WORD_LEN] = {0};
@@ -46,6 +49,7 @@ int main()
     sRamDump(0x3FFBF8, 100);
     sRamDump(ramSize - 0x7F, 0x80);
     printf("\r\n");
+
 
     /* Test word mode */
     printf("\r\nSet word mode");
@@ -88,6 +92,7 @@ void sRamDump(uint32_t addr, uint32_t len)
         }
         printf(" %02X", (unsigned int)b);
         addr++;
+        Thread::wait(10);
     }
     printf("\r\n");
 }

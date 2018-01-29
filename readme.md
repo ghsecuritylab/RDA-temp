@@ -4,5 +4,5 @@
 * run compile.bat to compile it, open file to see folder directory, and output
 
 ## Log
-* PSRAM - need add a small delay to dump out all data, otherwise data will miss some
+* PSRAM - need add a small delay to dump out all data, otherwise data will miss some output, add 10 ms here
 * delay API - Thread::wait(100);
